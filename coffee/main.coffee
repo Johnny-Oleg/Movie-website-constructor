@@ -32,7 +32,7 @@ createHeader = ({ header, title }) =>
 				href: item.link
 				textContent: item.title
 
-			$link
+			$link)
 
 		$menuBtn.addEventListener 'click', =>
 			$menuBtn.classList.toggle 'menu-button-active'
@@ -49,7 +49,7 @@ createHeader = ({ header, title }) =>
 			$socialLink = getElement 'a', ['social-link'],
 				href: item.link
 
-			const $socialImg = getElement 'img', [],
+			$socialImg = getElement 'img', [],
 				src: item.image
 				alt: item.title
 
