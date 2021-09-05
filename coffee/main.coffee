@@ -4,12 +4,12 @@ getElement = (tagName, classNames, attrs) =>
 	classNames and $elem.classList.add classNames...
 
 	if attrs
-		for i in attrs
+		for i of attrs
 			$elem[i] = attrs[i]
 
 	$elem
 
-createHeader = ({ header, title }) =>
+createHeader = ({header, title}) =>
 	{logo, menu, social} = header
  
 	$header = getElement 'header'
@@ -27,7 +27,7 @@ createHeader = ({ header, title }) =>
 		$nav = getElement 'nav', ['menu-list']
 		$menuBtn = getElement 'button', ['menu-button']
 
-		menuLink = menu.map (item =>
+		menuLink = menu.map ((item) =>
 			$link = getElement 'a', ['menu-link'],
 				href: item.link
 				textContent: item.title
@@ -45,7 +45,7 @@ createHeader = ({ header, title }) =>
 	if social
 		$socialWrapper = getElement 'div', ['social']
 
-		socialArr = social.map (item => 
+		socialArr = social.map ((item) => 
 			$socialLink = getElement 'a', ['social-link'],
 				href: item.link
 
@@ -65,7 +65,7 @@ createHeader = ({ header, title }) =>
 
 	$header
 
-createMain = ({ title, main }) => 
+createMain = ({title, main}) => 
 	{ genre, rating, description, trailer, slider } = main
 
 	$main = getElement 'main'
@@ -95,7 +95,7 @@ createMain = ({ title, main }) =>
 		while i < 10
 			$star = getElement 'img', ['star'],
 				alt: if i then '' else "Rating #{rating} out of 10"
-				src: i < if rating then 'img/star.svg' else 'img/star-o.svg'
+				src: if i <  rating then 'img/star.svg' else 'img/star-o.svg'
 
 			$stars.append $star
 			i++
@@ -135,7 +135,7 @@ createMain = ({ title, main }) =>
 		$swiperWrapper = getElement 'div', ['swiper-wrapper']
 		$arrow = getElement 'button', ['arrow']
 
-		slides = slider.map (item => 
+		slides = slider.map ((item) => 
 			$swiper = getElement 'div', ['swiper-slide']
 			$card = getElement 'figure', ['card']
 
@@ -172,14 +172,13 @@ createMain = ({ title, main }) =>
 					spaceBetween: 20
 				541:
 					slidesPerView: 2
-					spaceBetween: 40
-		)
+					spaceBetween: 40)
 
 	$main.append $container
 
 	$main
 
-createFooter = ({ footer }) => 
+createFooter = ({footer}) => 
 	{copyright, menu} = footer
 
 	$footer = getElement 'footer', ['footer']
@@ -198,7 +197,7 @@ createFooter = ({ footer }) =>
 		$rightBlock = getElement 'div', ['right']
 		$nav = getElement 'nav', ['footer-menu']
 
-		menuLink = menu.map (item => 
+		menuLink = menu.map ((item) => 
 			$link = getElement 'a', ['footer-link'], 
 				href: item.link,
 				textContent: item.title,
@@ -297,7 +296,7 @@ movieData =
   main:
     genre: '2019, fantasy'
     rating: '9'
-    description: 'Ведьмак Геральт, мутант и убийца чудовищ, на своей верной лошади по кличке Плотва путешествует по Континенту. За тугой мешочек чеканных монет этот мужчина избавит вас от всякой настырной нечисти — хоть от чудищ болотных, оборотней и даже заколдованных принцесс.'
+    description: "The show's first season follows Geralt of Rivia, Crown Princess Ciri, and the sorceress Yennefer of Vengerberg at different points of time, exploring formative events that shaped their characters, before eventually merging into a single timeline culminating at the battle for Sodden Hill against the invaders from Nilfgaard."
     trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ'
     slider: [
       {
@@ -323,7 +322,7 @@ movieData =
     ]
   footer:
     copyright:
-      year: '2020'
+      year: '2021'
       movie: 'The Witcher'
     menu: [
       {
