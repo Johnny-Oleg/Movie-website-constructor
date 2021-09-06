@@ -27,12 +27,12 @@ createHeader = ({header, title}) =>
 		$nav = getElement 'nav', ['menu-list']
 		$menuBtn = getElement 'button', ['menu-button']
 
-		menuLink = menu.map ((item) =>
+		menuLink = menu.map (item) =>
 			$link = getElement 'a', ['menu-link'],
 				href: item.link
 				textContent: item.title
 
-			$link)
+			$link
 
 		$menuBtn.addEventListener 'click', =>
 			$menuBtn.classList.toggle 'menu-button-active'
@@ -45,7 +45,7 @@ createHeader = ({header, title}) =>
 	if social
 		$socialWrapper = getElement 'div', ['social']
 
-		socialArr = social.map ((item) => 
+		socialArr = social.map (item) => 
 			$socialLink = getElement 'a', ['social-link'],
 				href: item.link
 
@@ -55,7 +55,7 @@ createHeader = ({header, title}) =>
 
 			$socialLink.append $socialImg
 
-			$socialLink)
+			$socialLink
 
 		$socialWrapper.append socialArr...
 		$wrapper.append $socialWrapper
@@ -66,7 +66,7 @@ createHeader = ({header, title}) =>
 	$header
 
 createMain = ({title, main}) => 
-	{ genre, rating, description, trailer, slider } = main
+	{genre, rating, description, trailer, slider} = main
 
 	$main = getElement 'main'
 	$container = getElement 'div', ['container']
@@ -91,14 +91,12 @@ createMain = ({title, main}) =>
 		$number = getElement 'div', ['rating-number', 'animated', 'fadeInRight'],
 			textContent: "#{rating}/10"
 		
-		i = 0
-		while i < 10
+		for i in [0..9] by 1
 			$star = getElement 'img', ['star'],
 				alt: if i then '' else "Rating #{rating} out of 10"
 				src: if i <  rating then 'img/star.svg' else 'img/star-o.svg'
 
 			$stars.append $star
-			i++
 
 		$block.append $stars, $number
 		$content.append $block
@@ -135,7 +133,7 @@ createMain = ({title, main}) =>
 		$swiperWrapper = getElement 'div', ['swiper-wrapper']
 		$arrow = getElement 'button', ['arrow']
 
-		slides = slider.map ((item) => 
+		slides = slider.map (item) => 
 			$swiper = getElement 'div', ['swiper-slide']
 			$card = getElement 'figure', ['card']
 
@@ -156,14 +154,14 @@ createMain = ({title, main}) =>
 			$card.append $cardImg
 			$swiper.append $card
 
-			$swiper)
+			$swiper
 
 		$swiperWrapper.append slides...
 		$swiperBlock.append $swiperWrapper 
 		$slider.append $swiperBlock, $arrow
 		$container.append $slider
 
-		new Swiper($swiperBlock,
+		new Swiper $swiperBlock,
 			loop: yes,
 			navigation: nextEl: $arrow
 			breakpoints:
@@ -172,7 +170,7 @@ createMain = ({title, main}) =>
 					spaceBetween: 20
 				541:
 					slidesPerView: 2
-					spaceBetween: 40)
+					spaceBetween: 40
 
 	$main.append $container
 
@@ -197,12 +195,12 @@ createFooter = ({footer}) =>
 		$rightBlock = getElement 'div', ['right']
 		$nav = getElement 'nav', ['footer-menu']
 
-		menuLink = menu.map ((item) => 
+		menuLink = menu.map (item) => 
 			$link = getElement 'a', ['footer-link'], 
 				href: item.link,
 				textContent: item.title,
 			
-			$link)
+			$link
 		
 		$nav.append menuLink...
 		$rightBlock.append $nav
@@ -263,35 +261,27 @@ movieData =
   header:
     logo: 'witcher/logo.png'
     social: [
-      {
         title: 'Twitter'
         link: 'https://twitter.com'
         image: 'witcher/social/twitter.svg'
-      }
-      {
+      ,
         title: 'Instagram'
         link: 'https://instagram.com'
         image: 'witcher/social/instagram.svg'
-      }
-      {
+      ,
         title: 'Facebook'
         link: 'https://facebook.com'
         image: 'witcher/social/facebook.svg'
-      }
     ]
     menu: [
-      {
         title: 'Description'
         link: '#'
-      }
-      {
+      ,
         title: 'Trailer'
         link: '#'
-      }
-      {
+      ,
         title: 'Reviews'
         link: '#'
-      }
     ]
   main:
     genre: '2019, fantasy'
@@ -299,44 +289,35 @@ movieData =
     description: "The show's first season follows Geralt of Rivia, Crown Princess Ciri, and the sorceress Yennefer of Vengerberg at different points of time, exploring formative events that shaped their characters, before eventually merging into a single timeline culminating at the battle for Sodden Hill against the invaders from Nilfgaard."
     trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ'
     slider: [
-      {
         img: 'witcher/series/series-1.jpg'
         title: 'The End\'s Beginning'
         subtitle: 'Episode No.1'
-      }
-      {
+      ,
         img: 'witcher/series/series-2.jpg'
         title: 'Four Marks'
         subtitle: 'Episode No.2'
-      }
-      {
+      ,
         img: 'witcher/series/series-3.jpg'
         title: 'Betrayer Moon'
         subtitle: 'Episode No.3'
-      }
-      {
+      ,
         img: 'witcher/series/series-4.jpg'
         title: 'Of Banquets, Bastards and Burials'
         subtitle: 'Episode No.4'
-      }
     ]
   footer:
     copyright:
       year: '2021'
       movie: 'The Witcher'
     menu: [
-      {
         title: 'Privacy Policy'
         link: '#'
-      }
-      {
+      ,
         title: 'Terms of Service'
         link: '#'
-      }
-      {
+      ,
         title: 'Legal'
         link: '#'
-      }
     ]
 
 movieConstructor '.app', movieData
