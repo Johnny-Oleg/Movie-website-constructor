@@ -79,7 +79,7 @@
 
 function init() {
 	document.head.insertAdjacentHTML('beforeend',
-		`<link type="text/css" rel="stylesheet" href="youtube-modal/index.css">`);
+		`<link type="text/css" rel="stylesheet" href="css/index.css">`);
 
 	const overlay = document.createElement('div');
 	overlay.className = 'youtube-modal-overlay';

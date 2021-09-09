@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "coffee": "coffee --watch --compile coffee/main.coffee"
+    "compile": "coffee --watch --compile coffee/index.coffee",
+    "coffee": "coffee -o coffee/ -cw coffee/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "coffeescript": "^2.5.1"
+  },
+  "dependencies": {
+    "coffeelint": "^2.1.0"
   }
 }
